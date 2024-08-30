@@ -5,3 +5,11 @@ from django.shortcuts import render
 def homepage(request):
     
     return render(request, 'Home.html')
+
+def alquiler(request):
+    
+    return render(request, 'Alquiler.html')
+
+def canchas(request):
+    
+    return render(request, 'Canchas.html')

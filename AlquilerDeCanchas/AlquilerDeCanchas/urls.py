@@ -20,5 +20,7 @@ from GestionDeCanchas import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Home/', views.homepage),
+    path('', views.homepage, name="inicio"),
+    path('Alquiler/', views.alquiler, name="alquiler"),
+    path('Canchas/', views.canchas, name="canchas"),
 ]

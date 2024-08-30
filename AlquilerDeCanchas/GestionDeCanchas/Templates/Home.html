@@ -1,11 +1,13 @@
+<!DOCTYPE html>
 <html>
-
     <head>
-
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Sistema de Reservas de Canchas</title>
-
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
     </head>
-
     <body>
 
         <h1> Bienvenido al Sistemas de Reservas de Canchas </h1>
@@ -13,12 +15,10 @@
         <h2> ¿Que Desea Hacer? </h2>
 
         <ul>
-            <li> Alquilar Cancha </li>
-            <li> Canchas </li>
-            <li>Home3</li>
-            <li>Home4</li>
+            <li><a href="{% url 'alquiler' %}"> Alquiler de Canchas </a></li>
+            <li><a href="{% url 'canchas' %}"> Gestion de Canchas </a></li>
        </ul>
-
+        
+        <script src="" async defer></script>
     </body>
-    
 </html>
