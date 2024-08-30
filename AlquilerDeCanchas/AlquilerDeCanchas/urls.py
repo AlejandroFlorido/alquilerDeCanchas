@@ -23,5 +23,6 @@ urlpatterns = [
     path('', views.homepage, name="inicio"),
     path('Alquiler/', views.alquiler, name="alquiler"),
     path('Canchas/', views.canchas, name="canchas"),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls'), name="login"),
+    path('logout/', views.exit, name="exit"),
 ]
