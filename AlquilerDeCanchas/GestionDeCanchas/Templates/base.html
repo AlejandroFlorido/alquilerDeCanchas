@@ -9,31 +9,11 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+       
+        {% block body %}
 
-        <h1> Inicio </h1>
+        {% endblock %}
 
-        {% if request.user.is_authenticated %}
-                
-            <hr>
-
-            <h2> {{ user.username | upper }} </h2>
-
-        {% endif %}
-
-        <ul>
-            <li><a href="{% url 'alquiler' %}"> Alquiler de Canchas </a></li>
-            <li><a href="{% url 'canchas' %}"> Gestion de Canchas </a></li>
-            {% if request.user.is_authenticated %}
-                
-                <li><a href="{% url 'exit' %}"> Salir </a></li>
-            
-            {% else %}
-
-                <li><a href="{% url 'login' %}"> Ingresar </a></li>
-
-            {% endif %}
-       </ul>
-        
         <script src="" async defer></script>
     </body>
 </html>

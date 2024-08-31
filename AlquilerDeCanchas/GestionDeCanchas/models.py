@@ -11,3 +11,9 @@ class Cancha(models.Model):
     con_luz = models.BooleanField()
     horario_reservado = models.BooleanField()
     duracion_reserva = models.IntegerField()
+
+    def __str__(self):
+
+        texto = "{0} ({1})"
+        
+        return texto.format(self.Nombre_cancha, self.disponible)
