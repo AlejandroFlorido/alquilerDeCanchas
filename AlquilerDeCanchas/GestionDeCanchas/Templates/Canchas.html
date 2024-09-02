@@ -1,7 +1,61 @@
-{% extends "./base.html" %}
+{% extends 'base.html' %}
+
+{% block title %} Gestion de Canchas {% endblock title %}
 
 {% block body %}
 
-    <h3> Inicio </h3>
+    <div class="ro2">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <h2> Gestion de Canchas </h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre de cancha">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="numberID" name="numberID" class="form-control" placeholder="ID de Cancha">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="txtTipo" name="txtTipo" class="form-control" placeholder="Tipo">
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkboxdis" name="checkboxdis" placeholder="Disponible">
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkboxluz" name="checkboxluz" placeholder="con luz">
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="checkboxre" name="checkboxre" placeholder="horario_reservado">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="numberdu" name="numberdu" class="form-control" placeholder="Duracion de la reserva">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+            <h1> Listado de Canchas </h1>
+            <div class="table-responsive py-2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Nombre </th>
+                            <th> Codigo </th>
+                            <th> Tipo </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in canchas %}
+                            <td> {{c.Nombre_cancha}} </td>
+                            <td> {{c.id_cancha}} </td>
+                            <td> {{c.tipo}} </td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

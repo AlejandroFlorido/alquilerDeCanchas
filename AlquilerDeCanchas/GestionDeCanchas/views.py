@@ -5,15 +5,17 @@ from django.contrib.auth import logout
 
 # Create your views here.
 
-@login_required
-
 def homepage(request):
     
     return render(request, 'Home.html')
 
+@login_required
+
 def alquiler(request):
     
     return render(request, 'Alquiler.html')
+
+@login_required
 
 def canchas(request):
     
