@@ -25,4 +25,5 @@ urlpatterns = [
     path('Canchas/', views.canchas, name="canchas"),
     path('accounts/', include('django.contrib.auth.urls'), name="login"),
     path('logout/', views.exit, name="exit"),
+    path('registrarcancha/', views.registrarcancha, name="registrarcancha")
 ]
