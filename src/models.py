@@ -1,4 +1,5 @@
 class Cancha:
+    #Clase que define las canchas y sus atributos
     def __init__(self, id_cancha, tipo, disponible=True, con_luz=False, horario_reservado=None, duracion_reserva=1):
         self.id_cancha = id_cancha
         self.tipo = tipo
@@ -8,6 +9,7 @@ class Cancha:
         self.duracion_reserva = duracion_reserva
 
     def calcular_horario_fin(self):
+        # Se encarga de calcular el horario de finalización de la reserva
         if self.horario_reservado:
             hora_inicio, _ = map(int, self.horario_reservado.split(":"))
             hora_fin = (hora_inicio + self.duracion_reserva) % 24
@@ -15,6 +17,7 @@ class Cancha:
         return None
 
     def __str__(self):
+        # Se encarga de devolver el estado de la cancha como una cadena de texto
         if self.disponible:
             estado = "Disponible"
         else:
@@ -25,6 +28,7 @@ class Cancha:
 
 class SistemaReservas:
     def __init__(self):
+        # Se encarga de inicializar las canchas disponibles y las reservas
         self.canchas = [
             Cancha(1, "Básquet"), Cancha(2, "Básquet"),
             Cancha(3, "Vóley"), Cancha(4, "Vóley"),
@@ -36,10 +40,12 @@ class SistemaReservas:
         self.reservas = []
 
     def mostrar_canchas_por_horario(self, horario):
+        # Se encarga de mostrar todas las canchas y su disponibilidad para un horario específico
         for cancha in self.canchas:
             print(cancha)
 
     def mostrar_canchas_ocupadas(self):
+        # Se encarga de mostrar las canchas que están ocupadas
         canchas_ocupadas = [c for c in self.canchas if not c.disponible]
         if canchas_ocupadas:
             print("\nCanchas ocupadas:")
@@ -49,6 +55,7 @@ class SistemaReservas:
             print("No hay canchas ocupadas en este momento.")
 
     def reservar_cancha(self, id_cancha, horario, duracion=1, con_luz=False):
+        # Se encarga de realizar una reserva
         cancha = next((c for c in self.canchas if c.id_cancha == id_cancha), None)
         if cancha and cancha.disponible:
             cancha.disponible = False
@@ -63,6 +70,7 @@ class SistemaReservas:
             print("Cancha no disponible o inexistente.")
 
     def liberar_cancha(self, id_cancha):
+        # Se encarga de anular una reserva
         cancha = next((c for c in self.canchas if c.id_cancha == id_cancha), None)
         if cancha and not cancha.disponible:
             cancha.disponible = True
@@ -75,6 +83,7 @@ class SistemaReservas:
             print("Cancha ya está disponible o no existe.")
 
     def horario_valido(self, horario):
+        # Se encarga de verificar si el horario ingresado es válido según el horario de apertura del predio
         try:
             hora, minutos = map(int, horario.split(":"))
             if (13 <= hora < 24) or (0 <= hora <= 2):
