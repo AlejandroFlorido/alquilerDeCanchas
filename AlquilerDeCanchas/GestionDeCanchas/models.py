@@ -5,7 +5,7 @@ from django.db import models
 class Cancha(models.Model):
 
     Nombre_cancha = models.CharField(max_length=50)
-    id_cancha = models.CharField(primary_key=True, max_length=6)
+    id_cancha = models.AutoField(primary_key=True)
     tipo = models.CharField(max_length=50)
     disponible = models.BooleanField()
     con_luz = models.BooleanField()
@@ -17,3 +17,10 @@ class Cancha(models.Model):
         texto = "{0} ({1})"
         
         return texto.format(self.Nombre_cancha, self.disponible)
+    
+class Cliente(models.Model):
+
+    Nombre_completo = models.CharField(max_length=50)
+    dni = models.BigIntegerField(primary_key=True)
+    telefono = models.BigIntegerField()
+    email = models.CharField(max_length=50)

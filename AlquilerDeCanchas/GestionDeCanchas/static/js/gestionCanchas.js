@@ -1,8 +1,12 @@
-const btnEliminar = document.querySelectorAll(".btnEliminar");
+(function (){
+    const btnEliminar = document.querySelectorAll(".btnEliminar");
 
-btnEliminar.forEach(btn => {
-    btn.addEventListener('click', e => {
-        const confirmacion = confirm('¿Seguro de eliminar la Cancha seleccionada?');
-        
+    btnEliminar.forEach(btn => {
+        btn.addEventListener('click', e => {
+            const confirmacion = confirm('¿Seguro de eliminar la Cancha seleccionada?');
+            if(!confirmacion){
+                e.preventDefault();
+            }
+        });
     });
-});
+})();

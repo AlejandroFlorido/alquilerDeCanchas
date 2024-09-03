@@ -29,4 +29,8 @@ urlpatterns = [
     path('Canchas/eliminarcancha/<id_cancha>', views.eliminarcancha, name="eliminarcancha"),
     path('Canchas/edicioncancha/<id_cancha>', views.edicioncancha, name="edicioncancha"),
     path('editarcancha/', views.editarcancha, name="editarcancha"),
+    path('Clientes/', views.clientes, name="clientes"),
+    path('registrarcliente/', views.registrarcliente, name="registrarcliente"),
+    path('Clientes/eliminarcliente/<dni>', views.eliminarcliente, name="eliminarcliente"),
+    path('Clientes/edicioncliente/<dni>', views.edicioncliente, name="edicioncliente"),
 ]
