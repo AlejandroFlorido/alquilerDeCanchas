@@ -42,3 +42,34 @@ def registrarcancha(request):
     cancha= Cancha.objects.create(Nombre_cancha=Nombre_cancha, id_cancha=id_cancha, tipo=tipo, disponible=disponible, con_luz=con_luz, horario_reservado=horario_reservado, duracion_reserva=duracion_reserva)
 
     return redirect('canchas')
+
+def edicioncancha(request, id_cancha):
+
+    cancha = Cancha.objects.get(id_cancha=id_cancha)
+
+    return render(request, 'Edicioncancha.html', {"cancha":cancha})
+
+def editarcancha(request):
+
+    Nombre_cancha=request.POST['txtNombre']
+    id_cancha=request.POST['numberID']
+    tipo=request.POST['txtTipo']
+    duracion_reserva=request.POST['numberdu']
+
+    cancha = Cancha.objects.get(id_cancha=id_cancha)
+    cancha.Nombre_cancha = Nombre_cancha
+    cancha.tipo = tipo
+    cancha.duracion_reserva = duracion_reserva
+
+    cancha.save()
+
+    return redirect('canchas')    
+
+def eliminarcancha(request, id_cancha):
+    
+    cancha = Cancha.objects.get(id_cancha=id_cancha)
+
+    cancha.delete()
+
+    return redirect('canchas')
+    

@@ -35,17 +35,22 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th> # </th>
                             <th> Nombre </th>
                             <th> Codigo </th>
                             <th> Tipo </th>
+                            <th colspan="2"> Opciones </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for c in canchaslistadas %}
                             <tr>
+                                <td> {{forloop.counter}} </td>
                                 <td> {{c.Nombre_cancha}} </td>
                                 <td> {{c.id_cancha}} </td>
                                 <td> {{c.tipo}} </td>
+                                <td><a href="edicioncancha/{{ c.id_cancha }}" class="btn btn-info"> Editar </a></td>
+                                <td><a href="eliminarcancha/{{ c.id_cancha }}" class="btn btn-danger btnEliminar"> Eliminar </a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

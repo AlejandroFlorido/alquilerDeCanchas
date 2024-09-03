@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Gestion de Canchas {% endblock title %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <h2> Edicion de Canchas </h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/editarcancha/" method="POST">{% csrf_token %}
+                        <div class="form-group py-1">
+                            <input type="text" id="txtNombre" name="txtNombre" value="{{cancha.Nombre_cancha}}" class="form-control" placeholder="Nombre de cancha">
+                        </div>
+                        <div class="form-group py-1">
+                            <input type="number" id="numberID" name="numberID" value="{{cancha.id_cancha}}" class="form-control" placeholder="ID de Cancha" readonly>
+                        </div>
+                        <div class="form-group py-1">
+                            <input type="text" id="txtTipo" name="txtTipo" value="{{cancha.tipo}}" class="form-control" placeholder="Tipo">
+                        </div>
+                        <div class="form-group py-1">
+                            <input type="number" id="numberdu" name="numberdu" value="{{cancha.duracion_reserva}}" class="form-control" placeholder="Duracion de la reserva">
+                        </div>
+                        <div class="form-group py-1">
+                            <button type="submit" class="btn btn-success btn-block text-white"> Guardar </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
