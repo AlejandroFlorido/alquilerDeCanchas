@@ -33,4 +33,5 @@ urlpatterns = [
     path('registrarcliente/', views.registrarcliente, name="registrarcliente"),
     path('Clientes/eliminarcliente/<dni>', views.eliminarcliente, name="eliminarcliente"),
     path('Clientes/edicioncliente/<dni>', views.edicioncliente, name="edicioncliente"),
+    path('editarcliente/', views.editarcliente, name="editarcliente"),
 ]

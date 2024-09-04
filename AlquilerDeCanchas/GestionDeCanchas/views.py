@@ -96,7 +96,7 @@ def registrarcliente(request):
 
     cliente= Cliente.objects.create(Nombre_completo=Nombre_completo, dni=dni, telefono=telefono, email=email)
 
-    messages.success(request, 'Se ha registrado una cliente')
+    messages.success(request, 'Se ha registrado un cliente')
 
     return redirect('clientes')
 
@@ -120,7 +120,7 @@ def editarcliente(request):
 
     cliente.save()
 
-    messages.success(request, 'Se ha editado con exito el cliente seleccionada')
+    messages.success(request, 'Se ha editado con exito el cliente seleccionado')
 
     return redirect('clientes')    
 
@@ -130,7 +130,7 @@ def eliminarcliente(request, dni):
 
     cliente.delete()
 
-    messages.success(request, 'Se ha eliminado el cliente seleccionada')
+    messages.success(request, 'Se ha eliminado el cliente seleccionado')
 
     return redirect('clientes')
     
