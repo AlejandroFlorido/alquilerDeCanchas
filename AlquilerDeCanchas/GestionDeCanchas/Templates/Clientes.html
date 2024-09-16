@@ -1,51 +1,56 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Gestion de Clientes {% endblock title %}
 
+{% block extra_css %}
+<link href="{% static 'css/gestion.css' %}" rel="stylesheet">
+{% endblock extra_css %}
+
 {% block body %}
 
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+    <div class="container">
+        <div class="register">
             {% if messages %}
                 {% for message in messages %}
-                    <div class="alert alert-dismissible alert-success">
+                    <div class="alert">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong class="text-dark">{{ message }}</strong>
+                        <strong>{{ message }}</strong>
                     </div>
                 {% endfor %}
             {% endif %}
-            <h2> Gestion de Clientes </h2>
+            <h2 class="title"> Gestion de Clientes </h2>
             <div class="card">
                 <div class="card-body">
                     <form action="/registrarcliente/" method="POST">{% csrf_token %}
-                        <div class="form-group py-1">
+                        <div class="card-item">
                             <label for="exampleFormControlInput1" class="form-label">Nombre Completo</label>
                             <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre Completo">
                         </div>
-                        <div class="form-group py-1">
+                        <div class="card-item">
                             <label for="exampleFormControlInput1" class="form-label">DNI</label>
                             <input type="number" id="numberdni" name="numberdni" class="form-control" placeholder="DNI">
                         </div>
-                        <div class="form-group py-1">
+                        <div class="card-item">
                             <label for="exampleFormControlInput1" class="form-label">Telefono</label>
                             <input type="number" id="numbertel" name="numbertel" class="form-control" placeholder="Telefono">
                         </div>
-                        <div class="form-group py-1">
+                        <div class="card-item">
                             <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
                             <input type="email" id="email" name="email" class="form-control" placeholder="Correo Electronico">
                         </div>
-                        <div class="form-group py-1">
+                        <div class="card-item">
                             <button type="submit" class="btn btn-success btn-block text-white"> Guardar </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-            <h1> Listado de Clientes </h1>
-            <div class="table-responsive py-2">
-                <table class="table table-striped">
-                    <thead>
+        <div class="list">
+            <h2> Listado de Clientes </h2>
+            <div class="list-content">
+                <table class="list-table">
+                    <thead class="th-thead">
                         <tr>
                             <th> # </th>
                             <th> Nombre </th>
@@ -56,13 +61,13 @@
                     </thead>
                     <tbody>
                         {% for c in clienteslistados %}
-                            <tr>
+                            <tr class="tr-tbody">
                                 <td> {{forloop.counter}} </td>
                                 <td> {{c.Nombre_completo}} </td>
                                 <td> {{c.dni}} </td>
                                 <td> {{c.telefono}} </td>
-                                <td><a href="edicioncliente/{{ c.dni }}" class="btn btn-info"> Editar </a></td>
-                                <td><a href="eliminarcliente/{{ c.dni }}" class="btn btn-danger btnEliminar"> Eliminar </a></td>
+                                <td><a href="edicioncliente/{{ c.dni }}"> <button class="edit-button"> Editar </button> </a></td>
+                                <td><a href="eliminarcliente/{{ c.dni }}"> <button class="delete-button"> Eliminar </button> </a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

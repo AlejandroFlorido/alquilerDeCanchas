@@ -1,28 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Gestion de Canchas {% endblock title %}
 
+{% block extra_css %}
+    <link href="{% static 'css/gestion.css' %}" rel="stylesheet">
+{% endblock extra_css %}
+
 {% block body %}
 
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+    <div class="container">
+        <div class="register">
             {% if messages %}
                 {% for message in messages %}
-                    <div class="alert alert-dismissible alert-success">
+                    <div class="alert">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong class="text-dark">{{ message }}</strong>
+                        <strong>{{ message }}</strong>
                     </div>
                 {% endfor %}
             {% endif %}
-            <h2> Gestion de Canchas </h2>
+            <h2 class="title"> Gestion de Canchas </h2>
             <div class="card">
                 <div class="card-body">
-                    <form action="/registrarcancha/" method="POST">{% csrf_token %}
-                        <div class="form-group py-1">
+                    <form action="/registrarcancha/" method="POST" class="card-form">{% csrf_token %}
+                        <div class="card-item">
                             <label for="exampleFormControlInput1" class="form-label">Nombre de Cancha</label>
                             <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre de cancha">
                         </div>
-                        <div class="form-group py-1">
+                        <div class="card-item">
                             <label for="exampleFormControlInput1" class="form-label">Tipo</label>
                             <input type="text" id="txtTipo" name="txtTipo" class="form-control" list="datalistOptions" placeholder="Tipo">
                             <datalist id="datalistOptions">
@@ -31,23 +36,23 @@
                                 <option value="Voley">
                             </datalist>
                         </div>
-                        <div class="form-group py-1">
+                        <div class="card-item">
                             <label for="exampleFormControlInput1" class="form-label">Duracion de la Reserva</label>
                             <input type="number" id="numberdu" name="numberdu" class="form-control" placeholder="Duracion de la reserva">
                         </div>
-                        <div class="form-group py-1">
-                            <button type="submit" class="btn btn-success btn-block text-white"> Guardar </button>
+                        <div class="card-item">
+                            <button type="submit" class="card-button"> Guardar </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-            <h1> Listado de Canchas </h1>
-            <div class="table-responsive py-2">
-                <table class="table table-striped">
+        <div class="list">
+            <h2> Listado de Canchas </h2>
+            <div class="list-content">
+                <table class="list-table">
                     <thead>
-                        <tr>
+                        <tr class="th-thead">
                             <th> # </th>
                             <th> Nombre </th>
                             <th> Codigo </th>
@@ -57,13 +62,13 @@
                     </thead>
                     <tbody>
                         {% for c in canchaslistadas %}
-                            <tr>
+                            <tr class="tr-tbody">
                                 <td> {{forloop.counter}} </td>
                                 <td> {{c.Nombre_cancha}} </td>
                                 <td> {{c.id_cancha}} </td>
                                 <td> {{c.tipo}} </td>
-                                <td><a href="edicioncancha/{{ c.id_cancha }}" class="btn btn-info"> Editar </a></td>
-                                <td><a href="eliminarcancha/{{ c.id_cancha }}" class="btn btn-danger btnEliminar"> Eliminar </a></td>
+                                <td><a href="edicioncancha/{{ c.id_cancha }}"> <button class="edit-button"> Editar </button></a></td>
+                                <td><a href="eliminarcancha/{{ c.id_cancha }}"> <button class="delete-button"> Eliminar </button> </a></td>
                             </tr>
                         {% endfor %}
                     </tbody>
